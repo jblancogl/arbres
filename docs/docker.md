@@ -88,7 +88,7 @@ permet que le résultat soit beaucoup plus propre et léger.
     RUN curl -L -s https://www.data.gouv.fr/fr/datasets/r/aaaddd02-206f-4d60-a04c-9a201297a3da > arbres.csv
     ```
     
-    * On créé les tuiles avec Tippecanoe
+    * On crée les tuiles avec Tippecanoe
     ```Docker
     RUN tippecanoe --output-to-directory tiles \
                    --quiet \
@@ -102,44 +102,44 @@ permet que le résultat soit beaucoup plus propre et léger.
 
 2. **Stage Nginx:**  Créer un serveur web statique avec l’information de l’étape précédente.
 
-    * On créé une image basée sur `nginx:alpine`
+    * Créer une image basée sur `nginx:alpine`
     ```Docker
     FROM nginx:alpine
     ```
 
-    * Limpiamos el contenido de la carpeta de nginx por defecto.
+    * Nettoyer le contenu par défaut du dossier de nginx.
     ```Docker
     RUN rm -rf /usr/share/nginx/html/*
     ```
 
-    * Copiamos la carpeta con las teselas del paso anterior en la carpeta de nginx
+    * Copier le dossier avec les tuiles de l’étape précédente dans le dossier de nginx
     ```Docker
     COPY --from=builder /app/tiles /usr/share/nginx/html/tiles
     ```
 
-    * Añadimos nuestro archivo html para poder visualizar nuestras teselas
+    * Ajouter notre fichier html pour pouvoir visualiser nos tuiles
     ```Docker
     ADD index.html /usr/share/nginx/html
     ```
 
-    * Añadimos nuestra nueva configuración
+    * Ajouter notre nouvelle configuration
     ```Docker
     ADD nginx/default.conf /etc/nginx/conf.d/default.conf
     ```
 
-    * Exponemos el puerto 80
+    * Exposer le port 80
     ```Docker
     EXPOSE 80
     ```
 
-    * Finalmente lanzamos nuestro servidor !
+    * Et enfin, lancer notre serveur!
     ```Docker
     CMD ["nginx", "-g", "daemon off;"]
     ```
 
 
 
-## Nuestro Dockerfile final
+## Notre Dockerfile final
 
 ```Dockerfile
 FROM node:alpine AS builder
@@ -180,9 +180,9 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-## Construir nuestra imagen
+## Construire notre image
 
-Ahora construimos nuestra imagen con el siguiente comando:
+Construisons maintenant notre image avec le commando suivant:
 
 ```sh
 docker build -t jblancogl/arbres:latest .
@@ -192,7 +192,7 @@ docker build -t jblancogl/arbres:latest .
     **-t** es opcional, es el nombre a la etiqueta que le he dado. 
     Puedes ver más opciones [aquí][2].
 
-Para verificar que todo ha ido bien ejecutamos el siguiente comando.
+Pour vérifier que tout a bien fonctionné, on exécute le commando suivant .
 
 ```sh
 docker images | grep jblancogl/arbres
@@ -214,13 +214,13 @@ docker run --publish 8855:80 --detach --name arbres-server jblancogl/arbres
 
 Ahora si vamos al explorador deberiamos de poder ver nuestro mapa aqui -> <http://localhost:8855>
 
-## Publicar nuestra imagen en hub.docker.com
+## Publier notre image dans hub.docker.com
 
 ```sh
 docker push jblancogl/arbres:latest
 ```
 
-## Recuperar nuestra imagen desde cualquier máquina con docker
+## Récupérer notre image depuis n’importe quelle machine avec docker
 
 ```sh
 docker pull jblancogl/arbres:latest

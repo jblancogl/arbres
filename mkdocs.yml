@@ -7,6 +7,7 @@ nav:
 
 theme: 
   name: material
+  logo: images/logo.svg
   language: fr
   palette:
     primary: green
