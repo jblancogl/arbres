@@ -62,18 +62,18 @@ location ~* (.+\.(pbf))$ { <-- para todos los archivos de tipo pbf
 
 ## Dockerfile
 
-Ahora pasamos a crear nuestro Dockerfile. Nos servimos del potencial que nos da
-los [multi-stage builds][1] para dividir nuestra imagen docker en dos etapas. 
-Al hacerlo así, solo la última etapa será incluida en la imagen, haciendo que el
-resultado sea mucho más limpio y ligero.
+Nous allons maintenant créer notre Dockerfile. Nous utilisons la puissance que 
+nous donnent les [multi-stage builds][1] pour diviser notre image docker en deux étapes. 
+En procédant ainsi, seule la dernière étape est utilisée dans l’image, ce qui 
+permet que le résultat soit beaucoup plus propre et léger.
 
-1. **Stage Build:** Crear las teselas
-    * Usamos como imagen node:alpine y la etiquetamos la `stage` como **builder**
+1. **Stage Build:** Créer les tuiles 
+    * Utiliser comme image `node:alpine` et étiqueter la `stage` comme **builder**
     ```Docker
     FROM node:alpine AS builder
     ```
     
-    * Instalamos todas las dependencias que necesitamos y compilamos **tippecanoe**
+    * On installe toutes les dépendances dont on a besoin et on compile **Tippecanoe**
     ```Docker
     RUN apk add --no-cache sudo git g++ make libgcc libstdc++ sqlite-libs \
       sqlite-dev zlib-dev bash curl \
@@ -83,12 +83,12 @@ resultado sea mucho más limpio y ligero.
       && make install
     ```
     
-    * Descargamos el archivo **csv** de <http://www.data.fr>
+    * On télécharge le fichier **csv** de <http://www.data.fr>
     ```Docker
     RUN curl -L -s https://www.data.gouv.fr/fr/datasets/r/aaaddd02-206f-4d60-a04c-9a201297a3da > arbres.csv
     ```
     
-    * Creamos las teselas con tippecanoe
+    * On créé les tuiles avec Tippecanoe
     ```Docker
     RUN tippecanoe --output-to-directory tiles \
                    --quiet \
@@ -100,8 +100,9 @@ resultado sea mucho más limpio y ligero.
                    arbres.csv
     ```
 
-2. **Stage Nginx:** Creamos un servidor de estáticos con la información de la etapa precedente.
-    * Creamos una imagen basada en `nginx:alpine`
+2. **Stage Nginx:**  Créer un serveur web statique avec l’information de l’étape précédente.
+
+    * On créé une image basée sur `nginx:alpine`
     ```Docker
     FROM nginx:alpine
     ```
