@@ -124,74 +124,76 @@ web statique local (je développe dans le point suivant).
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
-<title>Arbres JAM</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
+  <title>Comment créer une carte web statique avec plus de 2 millions d'arbres?</title>
+  <style>
     body {
-        margin: 0;
-        padding: 0;
+      margin: 0;
+      padding: 0;
     }
 
     #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
     }
-</style>
+  </style>
 </head>
 
 <body>
-<div id="map"></div>
-<script>
+  <div id="map"></div>
+  <script>
+    var tilesOSM = [
+      "http://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+      "http://b.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
+      "http://c.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+    ]
+    var tilesArbres = [
+      `${window.location.origin}/tiles/{z}/{x}/{y}.pbf`
+    ]
     var map = new mapboxgl.Map({
-        center: [
-            2.548828,
-            46.739861
-        ],
-        zoom: 5,
-        container: 'map',
-        style: {
-            "version": 8,
-            "name": "Arbres",
-            "sources": {
-                "osm": {
-                    "type": "raster",
-                    "tiles": [
-                        "http://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
-                        "http://b.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
-                        "http://c.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
-                    ]
-                },
-                "arbres": {
-                    "type": "vector",
-                    "tiles": [
-                        "http://localhost:5000/data/tiles/{z}/{x}/{y}.pbf"
-                    ],
-                    "minzoom": 0,
-                    "maxzoom": 13
-                }
-            },
-            "layers": [
-                {
-                    "id": "osm",
-                    "type": "raster",
-                    "source": "osm",
-                    "source-layer": "osm"
-                },
-                {
-                    "id": "arbres",
-                    "type": "circle",
-                    "source": "arbres",
-                    "source-layer": "arbres"
-                }
-            ]
-        }
+      center: [
+        2.548828,
+        46.739861
+      ],
+      zoom: 5,
+      container: 'map',
+      style: {
+        "version": 8,
+        "name": "Arbres",
+        "sources": {
+          "osm": {
+            "type": "raster",
+            "tiles": tilesOSM
+          },
+          "arbres": {
+            "type": "vector",
+            "tiles": tilesArbres,
+            "minzoom": 0,
+            "maxzoom": 13
+          }
+        },
+        "layers": [
+          {
+            "id": "osm",
+            "type": "raster",
+            "source": "osm",
+            "source-layer": "osm"
+          },
+          {
+            "id": "arbres",
+            "type": "circle",
+            "source": "arbres",
+            "source-layer": "arbres"
+          }
+        ]
+      }
     });
-</script>
+  </script>
 </body>
 
 </html>

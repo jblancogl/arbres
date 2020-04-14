@@ -1,10 +1,10 @@
 # Créer une image Docker avec la carte web statique
 
-Hasta aquí, todo lo que hemos hecho ha servido para mostrar nuestro dataset de
-árboles en un servidor de web estáticos local pero, ¿y si quisiéramos 
-desplegarlo en otra máquina/s o ayudar a otros a hacerlo? 
+Tout ce que nous avons fait jusqu’ici a servi pour montrer notre dataset d’arbres 
+dans un serveur web statique local mais, et si nous voulions le déployer 
+dans d’autres machines ou aider d’autres personnes à le faire?
 
-Vamos a ayudarnos de Docker para esta tarea.
+Pour cette tâche, nous allons utiliser Docker.
 
 ## Configuration de nginx
 
@@ -49,7 +49,7 @@ server {
 }
 ```
 
-La lineas que hemos añadido sería las siguientes:
+Les lignes que nous avons ajoutées sont celles-ci : 
 
 ```
 gzip on; <-- activamos la compresión
