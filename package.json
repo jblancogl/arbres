@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "npx serve",
-    "build": "./scripts/setup.sh"
+    "build": "./scripts/setup.sh",
+    "doc": "mkdocs build -d public"
   },
   "author": "javi blanco <hi@javiblanco.dev>",
   "license": "BSD"

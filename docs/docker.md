@@ -8,18 +8,19 @@ Vamos a ayudarnos de Docker para esta tarea.
 
 ## Configuration de nginx
 
-Ahora en lugar de `serve` vamos a usar `nginx` como servidor web de estáticos.
-Es posible que junto `apache` sea unos de los servidores más utilizados del
-planeta. 
+Nous allons maintenant utiliser `nginx` au lieu de `serve` comme serveur web statique. 
+Avec `apache`, il s’agit probablement de l’un des serveurs les plus utilisés de la 
+planète.
 
-Tenemos que crear un de configuración propia para nginx para indicarle que tiene
-que enviar la cabecera `Content-Encoding: gzip` cuando envíe los archivos **pbf**
-como habiamos visto con `serve`. Para ello, creamos un archivo en la carpeta 
-nginx que se llame default.conf. 
+Nous devons créer une configuration propre à nginx pour lui indiquer qu’il doit 
+envoyer l’en-tête `Content-Encoding: gzip` quand il envoie les fichiers **pbf**, 
+comme on l’a vu avec `serve`. Pour cela, on crée un fichier dans le dossier nginx, 
+qu’on nomme default.conf.
 
 !!! Info
-    Si has clonado el proyecto desde el repositorio puede saltarte este paso 
-    dado que ya tendrás este fichero.
+    Si vous avez cloné le projet depuis le dossier vous pouvez sauter cette étape 
+    puisque vous aurez déjà ce fichier.
+
 
 nginx/default.conf
 
