@@ -65,29 +65,29 @@ La qualité des résultats obtenus avec Tippecanoe est ainsi bien supérieure à
     ```
 
 === "Windows (WSL)"
-    Tippecanoe sólo puede ejecutarse en entornos unix tipo MacOS y Linux luego 
-    si estás en Windows tienes un problema. Gracias a [WSL][1] el 
-    problema tiene solución.
+    Tippecanoe s’éxécute uniquement dans des environnements unix type MacOS et 
+    Linux, vous aurez donc un problème si vous êtes sur Windows. Mais WSL offre 
+    une solution à ce problème.
 
-    **Pasos**
+    **Etapes**
 
-    1. [Instalación del Subsistema de Windows para Linux (WSL) - Ubuntu][2]
-    2. Abrir Ubuntu Bash una vez instalado
-    3. Instalar las dependencias para poder compilar tippecanoe
+    1. [Installer le sous-système de Windows pour Linux (WLS) - Ubuntu][2]
+    2. Ouvrir Ubuntu Bash une fois installé
+    3. Installer les dépendances pour pouvoir compiler Tippecanoe
     ```sh
     sudo apt-get install software-properties-common
     sudo apt-add-repository ppa:git-core/ppa
     sudo apt-get update
     sudo apt install git unzip wget build-essential libsqlite3-dev zlib1g-dev
     ```
-    4. Compilar e instalar tippecanoe
+    4. Compiler et installer Tippecanoe
     ```sh
     git clone https://github.com/mapbox/tippecanoe.git
     cd tippecanoe
     make -j
     sudo make install
     ```
-    5. Verificar la instalación
+    5. Vérifier l’installation
     ```sh
     tippecanoe --version
     ```
