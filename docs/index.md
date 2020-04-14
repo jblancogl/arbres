@@ -35,7 +35,7 @@ d’espace.
     Invoke-WebRequest https://www.data.gouv.fr/fr/datasets/r/aaaddd02-206f-4d60-a04c-9a201297a3da -OutFile arbres.csv
     ```
 
-## Tippecanoe un chef d'oeuvre d'ingéneriérie
+## Tippecanoe : un chef d'oeuvre d'ingénierie
 
 [Tippecanoe][3] est l'outil qui permet de créer des tuiles vectorielles depuis de grandes (ou petites) collections de GeoJSON, Geobuf, or CSV...
 
@@ -108,12 +108,12 @@ tippecanoe --output-to-directory tiles \
 * **-f or --force:** Elimine le dossier de tuiles s’il existait déjà et évite d’afficher une erreur.
 * **-X or --exclude-all:** Exclut tous les attributs de chaque élément et codifie seulement les géométries.
 * **-zg:** Choisit automatiquement le zoom qui devrait suffire pour distinguer clairement les caractéristiques et détails de chaque élément.
-* **--drop-densest-as-needed:** Si un tesela es demasiado grande, trata de reducirla a menos de 500K aumentando el espacio mínimo entre los elementos. El espaciado descubierto se aplica a todo el nivel de zoom.
+* **--drop-densest-as-needed:** Si une tuile est trop grande, essaie de la réduire à moins de 500K pour augmenter l’espace minimum entre les éléments. L’espacement découvert s’applique à tout le niveau de zoom.
 * **--extend-zooms-if-still-dropping:** Si les tuiles sont trop grandes même dans les niveaux élevés de zoom, continue d’ajouter des niveaux de zoom jusqu’à parvenir à un niveau qui puisse représenter toutes les caractéristiques.
 
 ## Montrer les tuiles en local
 
-Génial ! nous avons maintenant notre dossier de tuiles avec la structure suivante :  
+Très bien, nous avons maintenant notre dossier de tuiles avec la structure suivante :  
 `/tiles/z/x/y.pbf` mais, comment peut-on voir le résultat? C’est très simple, on 
 créé d’abord un fichier `index.html` qui contiendra une page [Mapbox GL JS][12] qui à 
 son tour contiendra la définition de deux sources d’entrée, [OSM][13] et notre serveur 
