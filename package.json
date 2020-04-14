@@ -1,0 +1,15 @@
+{
+  "name": "arbres",
+  "version": "1.0.0",
+  "description": "Comment créer une carte web statique avec plus de 2 millions d'arbres?",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "npx serve",
+    "build": "./scripts/setup.sh"
+  },
+  "author": "javi blanco <hi@javiblanco.dev>",
+  "license": "BSD"
+}

@@ -1,0 +1,23 @@
+site_name: Natural Solutions | Comment créer une carte web statique avec plus de 2 millions d'arbres?
+site_author: Javier Blanco
+nav:
+  - Créer une carte web statique avec un serveur local: 'index.md'
+  - Créer une image Docker avec la carte web statique: 'docker.md'
+  - Déployer notre carte web statique depuis AWS et CloudFront: 'aws.md'
+
+theme: 
+  name: material
+  language: fr
+  palette:
+    primary: green
+    accent: green
+  font: 
+    text: Inter
+    code: Fira Mono
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - admonition
