@@ -72,7 +72,7 @@ lectura al público
 }
 ```
 
-Y aplicamos la configuración con el siguiente comando:
+Et appliquer la configuration avec le commando suivant :
 
 ```sh
 aws s3api put-bucket-policy --bucket arbres-tiles --policy file://aws/policy.json 
@@ -96,7 +96,7 @@ solicitudes GET desde cualquier origen:
 }
 ```
 
-Y aplicamos la configuración con el siguiente comando:
+Et appliquer la configuration avec le commando suivant:
 
 ```sh
 aws s3api put-bucket-cors --bucket arbres-tiles --cors-configuration file://aws/cors.json

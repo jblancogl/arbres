@@ -9,8 +9,7 @@ Pour cette tâche, nous allons utiliser Docker.
 ## Configuration de nginx
 
 Nous allons maintenant utiliser `nginx` au lieu de `serve` comme serveur web statique. 
-Avec `apache`, il s’agit probablement de l’un des serveurs les plus utilisés de la 
-planète.
+Avec `apache`, il s’agit probablement de l’un des serveurs les plus utilisés.
 
 Nous devons créer une configuration propre à nginx pour lui indiquer qu’il doit 
 envoyer l’en-tête `Content-Encoding: gzip` quand il envoie les fichiers **pbf**, 
@@ -52,11 +51,11 @@ server {
 Les lignes que nous avons ajoutées sont celles-ci : 
 
 ```
-gzip on; <-- activamos la compresión
+gzip on; <-- activer la compression
 
-location ~* (.+\.(pbf))$ { <-- para todos los archivos de tipo pbf
-  root   /usr/share/nginx/html; <-- que se encuentren en la carpeta /usr/share/nginx/html
-  add_header Content-Encoding gzip; <-- enviamos una cabecera Content-Encoding gzip
+location ~* (.+\.(pbf))$ { <-- pour tous les fichiers pbf
+  root   /usr/share/nginx/html; <--  qui se trouvent dans le dossier /usr/share/nginx/html
+  add_header Content-Encoding gzip; <-- envoyer un dosier avec l'en-tête Content-Encoding gzip
 }
 ```
 
@@ -182,15 +181,14 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## Construire notre image
 
-Construisons maintenant notre image avec le commando suivant:
+Nous pouvons maintenant construire notre image avec le commando suivant:
 
 ```sh
 docker build -t jblancogl/arbres:latest .
 ```
 
 !!! Info
-    **-t** es opcional, es el nombre a la etiqueta que le he dado. 
-    Puedes ver más opciones [aquí][2].
+    **-t** est une option, c’est le nom de l’étiquette que je lui ai donnée. D’autres options sont visibles  [ici][2].
 
 Pour vérifier que tout a bien fonctionné, on exécute le commando suivant .
 
@@ -198,7 +196,7 @@ Pour vérifier que tout a bien fonctionné, on exécute le commando suivant .
 docker images | grep jblancogl/arbres
 ```
 
-Como resultado debería darnos algo parecido a esto:
+Le résultat obtenu devrait ressembler à ceci :
 
 ```sh
 jblancogl/arbres           latest              cdaedf29956c        9 hours ago         33.8MB
@@ -212,7 +210,7 @@ Nous avons notre image, nous pouvons donc créer notre container avec elle:
 docker run --publish 8855:80 --detach --name arbres-server jblancogl/arbres
 ```
 
-Ahora si vamos al explorador deberiamos de poder ver nuestro mapa aqui -> <http://localhost:8855>
+Si nous allons maintenant à l’explorateur, nous devrions pouvoir voir notre carte ici -> <http://localhost:8855>
 
 ## Publier notre image dans hub.docker.com
 
