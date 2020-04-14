@@ -2,7 +2,7 @@
 
 ## Pré-requis
 
-Antes de poder empezar tenemos que instalar la **AWS Command Line Interface**
+Avant de commencer il faut installer la **AWS Command Line Interface**
 
 === "Linux"
     ```bash
@@ -21,13 +21,13 @@ Antes de poder empezar tenemos que instalar la **AWS Command Line Interface**
     1. [Descargamos el AWS CLI MSI installer for Windows (64-bit)][1]
     2. Ejecutamos el programa y seguimos las instrucciones
 
-Crear una clave de acceso para poder configurar el cliente, para ello:
+Créer une clé d’accès pour pouvoir configurer le client. Pour cela : 
 
-1. vamos a <https://console.aws.amazon.com/iam/home#/security_credentials>
-2. Pulsamos sobre **Clés d'accès (ID de clé d'accès et clé d'accès secrète)**
+1. Aller à <https://console.aws.amazon.com/iam/home#/security_credentials>
+2. Cliquer sur **Clés d'accès (ID de clé d'accès et clé d'accès secrète)**
 3. Télecharger un ficher de clé
 
-Configurar el cliente con las claves descargadas
+Configurer le client avec les clés téléchargées 
 
 ```bash
 aws configure

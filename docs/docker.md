@@ -204,9 +204,9 @@ Como resultado debería darnos algo parecido a esto:
 jblancogl/arbres           latest              cdaedf29956c        9 hours ago         33.8MB
 ```
 
-## Iniciar nuestra image
+## Démarrer notre image
 
-Ya tenemos nuestra image, ya podemos crear nuestro contenedor con ella:
+Nous avons notre image, nous pouvons donc créer notre container avec elle:
 
 ```sh
 docker run --publish 8855:80 --detach --name arbres-server jblancogl/arbres
